@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The Pub Truck | Autoatendimento</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="The Pub Truck">
+        <span class="brand-mark">TPT</span>
+        <span>
+          <strong>The Pub Truck</strong>
+          <small>burgers artesanais</small>
+        </span>
+      </a>
+      <nav class="quick-nav" aria-label="Categorias principais">
+        <a href="#hamburgueres">Burgers</a>
+        <a href="#aperitivos">Aperitivos</a>
+        <a href="#bebidas">Bebidas</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <img src="assets/hero-burger-beer.jpg" alt="Hamburguer artesanal com batatas e cerveja" />
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <p class="eyebrow">Quinta do som ao vivo</p>
+          <h1 id="hero-title">The Pub Truck</h1>
+          <p class="hero-copy">Pedido pelo celular, burger na chapa e cerveja gelada no ritmo do evento.</p>
+          <form class="phone-form" id="phone-form">
+            <label for="phone">Seu celular</label>
+            <div class="phone-row">
+              <input id="phone" name="phone" inputmode="tel" autocomplete="tel" placeholder="(00) 00000-0000" required />
+              <button type="submit">Entrar</button>
+            </div>
+          </form>
+          <div class="event-strip" aria-label="Informacoes do evento">
+            <span>Hoje tem chapa aberta</span>
+            <span>Retirada no balcao</span>
+            <span>Combos com batata rustica</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="status-band" aria-label="Status da operacao">
+        <div>
+          <span class="status-dot"></span>
+          <strong>Atendimento aberto</strong>
+          <small>Pedidos para consumo no local</small>
+        </div>
+        <div>
+          <strong>15-25 min</strong>
+          <small>tempo medio de preparo</small>
+        </div>
+        <div>
+          <strong>Musica ao vivo</strong>
+          <small>quintas e eventos especiais</small>
+        </div>
+      </section>
+
+      <section class="feature-band">
+        <img src="assets/food-truck-night.jpg" alt="Food truck em evento noturno" />
+        <div>
+          <p class="eyebrow">No evento</p>
+          <h2>Escolha, personalize e acompanhe pelo numero do pedido.</h2>
+          <p>Esta primeira versao simula o fluxo do cliente. Depois conectamos o painel administrativo no IP local do roteador para cozinha e caixa operarem os pedidos em tempo real.</p>
+        </div>
+      </section>
+
+      <section class="menu-shell" aria-label="Cardapio">
+        <div class="menu-heading">
+          <div>
+            <p class="eyebrow">Cardapio</p>
+            <h2>Favoritos da casa</h2>
+          </div>
+          <div class="table-badge">Mesa QR</div>
+        </div>
+
+        <div class="category-tabs" id="category-tabs" role="tablist" aria-label="Filtrar cardapio"></div>
+        <div id="menu-sections"></div>
+      </section>
+    </main>
+
+    <button class="cart-fab" id="cart-fab" type="button" aria-label="Abrir carrinho">
+      <span id="cart-count">0 itens</span>
+      <strong id="cart-total">R$ 0,00</strong>
+    </button>
+
+    <aside class="drawer" id="cart-drawer" aria-hidden="true" aria-label="Carrinho">
+      <div class="drawer-panel">
+        <div class="drawer-header">
+          <div>
+            <p class="eyebrow">Pedido</p>
+            <h2>Seu carrinho</h2>
+          </div>
+          <button class="icon-button" id="close-cart" type="button" aria-label="Fechar">x</button>
+        </div>
+        <div class="cart-list" id="cart-list"></div>
+        <label class="order-note">
+          Observacao geral
+          <textarea id="order-note" rows="3" placeholder="Ex.: estou na mesa perto do palco"></textarea>
+        </label>
+        <div class="cart-summary">
+          <span>Total</span>
+          <strong id="drawer-total">R$ 0,00</strong>
+        </div>
+        <button class="send-order" id="send-order" type="button">Enviar pedido</button>
+      </div>
+    </aside>
+
+    <section class="modal" id="edit-modal" aria-hidden="true" aria-label="Editar item">
+      <div class="modal-panel">
+        <div class="modal-header">
+          <div>
+            <p class="eyebrow" id="modal-category">Hamburguer</p>
+            <h2 id="modal-title">Editar item</h2>
+          </div>
+          <button class="icon-button" id="close-modal" type="button" aria-label="Fechar">x</button>
+        </div>
+        <form id="custom-form">
+          <fieldset>
+            <legend>Pao</legend>
+            <div class="choice-grid" id="bread-options"></div>
+          </fieldset>
+          <fieldset id="meat-field">
+            <legend>Carne</legend>
+            <div class="choice-grid" id="meat-options"></div>
+          </fieldset>
+          <label class="check-row">
+            <input type="checkbox" id="combo-option" />
+            <span>Adicionar batata rustica ao combo <strong>+ R$ 14,00</strong></span>
+          </label>
+          <label class="order-note">
+            Observacoes do item
+            <textarea id="item-note" rows="3" placeholder="Sem tomate, molho separado, ponto da carne..."></textarea>
+          </label>
+          <div class="modal-actions">
+            <strong id="custom-price">R$ 0,00</strong>
+            <button type="submit">Adicionar ao pedido</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="modal" id="success-modal" aria-hidden="true" aria-label="Pedido enviado">
+      <div class="success-panel">
+        <p class="eyebrow">Pedido recebido</p>
+        <h2 id="success-title">Pedido #01</h2>
+        <p id="success-copy">Seu pedido foi enviado para a cozinha.</p>
+        <button class="send-order" id="new-order" type="button">Fazer outro pedido</button>
+      </div>
+    </section>
+
+    <script src="app.js"></script>
+  </body>
+</html>
